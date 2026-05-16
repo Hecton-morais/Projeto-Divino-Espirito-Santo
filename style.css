@@ -1,0 +1,401 @@
+/* =====================
+   RESET & BASE
+   ===================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #111, #050505);
+  color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* =====================
+   HEADER
+   ===================== */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 25px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* backdrop-filter só onde realmente necessário */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(10, 10, 10, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+  transition: background 0.3s;
+}
+
+.logo {
+  color: #ffd700;
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  font-weight: 200;
+}
+
+/* =====================
+   NAV
+   ===================== */
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav a {
+  color: #ccc;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background: linear-gradient(90deg, #ffd700, transparent);
+  transition: width 0.4s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* =====================
+   HERO
+   ===================== */
+.hero {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Imagem de fundo com overlay via pseudo-elemento é mais performático,
+     mas mantemos a sintaxe original simplificada */
+  background:
+    linear-gradient(rgba(1, 1, 1, 0.8), rgba(0, 0, 0, 0.95)),
+    url("./src/fotos/BACKGROUD - HOME.jpg") center / cover no-repeat;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 50px;
+  max-width: 900px;
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  line-height: 1.1;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero h2 span {
+  color: #ffd700;
+}
+
+.hero p {
+  margin: 20px 0;
+  color: #bbb;
+}
+
+/* =====================
+   BOTÃO
+   ===================== */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #ffd700, #ffae00);
+  color: #000;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer via pseudo-elemento */
+.btn::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.2);
+  top: -50%;
+  left: -50%;
+  transform: rotate(25deg);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+}
+
+/* =====================
+   SECTIONS (animação de entrada)
+   ===================== */
+section {
+  padding: 120px 40px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero já visível sem depender de JS */
+.hero {
+  opacity: 1;
+  transform: none;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+/* =====================
+   SOBRE
+   ===================== */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(rgba(1, 1, 1, 0.9), rgba(0, 0, 0, 0.95)),
+    url("./src/fotos/fundo-sobre.jpg") center / cover no-repeat;
+}
+
+.about-text {
+  max-width: 610px;
+  margin: 0 auto;
+  color: #bbb;
+  font-size: 20px; /* corrigido: era "20x" (typo) */
+  line-height: 1.7;
+}
+
+/* =====================
+   EVENTOS
+   ===================== */
+.event-grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: linear-gradient(145deg, #0011ff, #000);
+  padding: 25px;
+  border-radius: 16px;
+  width: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.4s, box-shadow 0.4s;
+  /* will-change só nos cards (elemento que realmente anima no hover) */
+  will-change: transform;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* =====================
+   GALERIA
+   ===================== */
+.gallery {
+  padding: 120px 40px;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.gallery-container {
+  width: 100%;
+  max-width: 1100px;
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-track img {
+  min-width: 410px;
+  height: 410px;
+  object-fit: cover;
+  border-radius: 75px;
+  flex-shrink: 0;
+  /* Dica ao browser para otimizar composição */
+  will-change: transform;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.gallery-track img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  filter: brightness(1.05);
+}
+
+/* =====================
+   BOTÕES DA GALERIA
+   ===================== */
+button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 50%;
+  z-index: 10;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.prev:hover,
+.next:hover {
+  transform: scale(1.1);
+  background: #222;
+}
+
+/* =====================
+   FORMULÁRIO
+   ===================== */
+.form {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  background: #111;
+  color: #fff;
+  /* transition só no border-color (mais leve) */
+  transition: border-color 0.3s;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #ffd700;
+}
+
+.form button {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ffd700, #ffae00);
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.form button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+}
+
+/* =====================
+   FOOTER
+   ===================== */
+.footer {
+  padding: 40px;
+  text-align: center;
+  background: #050505;
+  color: #888;
+}
+
+.secret-btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 20px;
+  opacity: 0.2;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.secret-btn:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* =====================
+   ANIMAÇÕES (apenas onde usadas)
+   ===================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================
+   RESPONSIVO
+   ===================== */
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 34px;
+  }
+
+  .header {
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+  }
+
+  .gallery-track img {
+    min-width: 260px;
+    height: auto;
+    border-radius: 30px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 380px;
+  }
+}

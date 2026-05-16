@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+
+  color: white;
+  overflow: hidden;
+  
+}
+
+body div{
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  gap: 20px;
+}
+
+.title-thais {
+  width: 100%;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 100;
+
+}
+
+.secret-page {
+  text-align: center;
+
+  max-width: 600px;
+
+  padding: 30px;
+
+  animation: fade 1.2s ease;
+}
+
+.secret-image {
+  width: 500px;
+  height: 350px;
+
+  object-fit: cover;
+
+  border-radius: 20px;
+
+  margin-bottom: 25px;
+
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+
+  transition: 0.4s;
+
+}
+
+.secret-image  buttom {
+  margin-top: 20px;
+  color: #fff;
+}
+
+.secret-image:hover {
+  transform: scale(1.03);
+}
+
+h1 {
+  font-size: 2.5rem;
+
+  margin-bottom: 15px;
+
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.1rem;
+
+  line-height: 1.8;
+
+  opacity: 0.85;
+  width: 100%;
+  
+}
+
+/* animação */
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.voltar-pagina-1 {
+  background: linear-gradient(135deg, #ffd700, #ffae00);
+  
+
+  border: none;
+  border-radius: 40px;
+
+  padding: 14px 28px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  box-shadow: 0 10px 25px rgba(255, 174, 0, 0.2);
+  gap: 90px
+}
+
+.voltar-pagina-1:hover {
+  transform: translateY(-4px) scale(1.03);
+
+  box-shadow: 0 15px 35px rgba(255, 174, 0, 0.4);
+}
+
+.voltar-pagina-1 a {
+  text-decoration: none;
+
+  color: #000;
+
+  font-weight: 600;
+
+  font-size: 15px;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divino Espírito Santo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <h1 class="logo">DIVINO ESPÍRITO SANTO</h1>
+  <nav class="nav" aria-label="Navegação principal">
+    <ul class="nav-list">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section id="inicio" class="hero">
+    <h2>FUI ESCOLHIDO, LEGITIMADO,<br> <span>EMBAIXADOR DE CRISTO</span></h2>
+    <p>Juventude unida por propósito, amizade e Cristo.</p>
+    <a href="#" class="btn">Quero participar</a>
+  </section>
+
+  <section id="sobre" class="about">
+    <div class="text">
+      <h2>Sobre nós</h2>
+      <p class="about-text">
+        <strong>Uma geração chamada para viver algo maior.</strong><br><br>
+        O grupo jovem <strong>Divino Espírito Santo</strong> reúne jovens que buscam viver a fé de forma verdadeira e com propósito.<br><br>
+        Mais do que encontros, somos uma família que cresce unida, fortalecendo a espiritualidade, criando laços e caminhando juntos com Deus.
+      </p>
+    </div>
+  </section>
+
+  <section id="eventos" class="events">
+    <h2>Próximos eventos</h2>
+    <div class="event-grid">
+      <article class="card">
+        <h3>Encontro Jovem</h3>
+        <p>Sábado às 18h</p>
+      </article>
+      <article class="card">
+        <h3>Retiro Espiritual</h3>
+        <p>Data a definir</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="galeria" class="gallery">
+    <h2>Galeria</h2>
+    <div class="carousel">
+      <button class="prev" aria-label="Anterior">❮</button>
+      <div class="gallery-container">
+        <div class="gallery-track">
+          <img src="./src/fotos/foto1.jpg" alt="Foto do grupo 1" loading="eager">
+          <img src="./src/fotos/foto2.jpg" alt="Foto do grupo 2" loading="lazy">
+          <img src="./src/fotos/foto3.jpg" alt="Foto do grupo 3" loading="lazy">
+          <img src="./src/fotos/foto5.jpg" alt="Foto do grupo 4" loading="lazy">
+          <img src="./src/fotos/foto6.jpg" alt="Foto do grupo 5" loading="lazy">
+          <img src="./src/fotos/foto7.jpg" alt="Foto do grupo 6" loading="lazy">
+        </div>
+      </div>
+      <button class="next" aria-label="Próximo">❯</button>
+    </div>
+  </section>
+
+  <section id="contato" class="contact">
+    <h2>Fale com a gente</h2>
+    <form class="form">
+      <input type="text" placeholder="Nome" autocomplete="name">
+      <input type="email" placeholder="Email" autocomplete="email">
+      <textarea placeholder="Mensagem" rows="5"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <a href="index2.html" class="secret-btn" aria-label="Página especial">✨</a>
+  <p>© 2026 Divino Espírito Santo</p>
+</footer>
+
+<script src="src/script.js" defer></script>
+
+</body>
+</html>
