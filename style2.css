@@ -23,6 +23,7 @@ body {
 body div{
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
   gap: 20px;
+  filter: blur(09px);
 }
 
 .title-thais {
