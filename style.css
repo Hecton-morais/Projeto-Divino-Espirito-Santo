@@ -184,20 +184,135 @@ h2 {
    SOBRE
    ===================== */
 .about {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 120px 8%;
+
   background:
-    linear-gradient(rgba(1, 1, 1, 0.9), rgba(0, 0, 0, 0.95)),
-    url("./src/fotos/fundo-sobre.jpg") center / cover no-repeat;
+    radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 40%),
+    #0d0d0d;
+}
+
+.about-container {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 70px;
+
+  flex-wrap: wrap;
+}
+
+.about-content {
+  flex: 1;
+
+  min-width: 320px;
+}
+
+.about-tag {
+  display: inline-block;
+
+  margin-bottom: 20px;
+
+  padding: 8px 18px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.06);
+
+  color: #d1d5db;
+
+  font-size: 13px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1px;
+}
+
+.about-content h2 {
+  font-size: 3rem;
+
+  line-height: 1.1;
+
+  margin-bottom: 30px;
+
+  color: white;
+
+  max-width: 600px;
 }
 
 .about-text {
-  max-width: 610px;
-  margin: 0 auto;
-  color: #bbb;
-  font-size: 20px; /* corrigido: era "20x" (typo) */
-  line-height: 1.7;
+  max-width: 620px;
+
+  color: rgba(255,255,255,0.72);
+
+  font-size: 1.05rem;
+
+  line-height: 2;
+
+  margin-bottom: 20px;
+}
+
+.about-side-card {
+  width: 350px;
+
+  padding: 35px;
+
+  border-radius: 28px;
+
+  background: rgba(255,255,255,0.04);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 40px rgba(0,0,0,0.3);
+
+  transition: 0.4s ease;
+}
+
+.about-side-card:hover {
+  transform: translateY(-6px);
+}
+
+.about-side-card h3 {
+  font-size: 1.5rem;
+
+  line-height: 1.6;
+
+  color: white;
+
+  margin-bottom: 25px;
+}
+
+.about-side-card span {
+  color: rgba(255,255,255,0.5);
+
+  font-size: 14px;
+
+  letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+
+  .about-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-content h2 {
+    font-size: 2.3rem;
+  }
+
+  .about-side-card {
+    width: 100%;
+  }
+
 }
 
 /* =====================
@@ -211,7 +326,7 @@ h2 {
 }
 
 .card {
-  background: linear-gradient(145deg, #0011ff, #000);
+  background: linear-gradient(145deg, #00021a, #000);
   padding: 25px;
   border-radius: 16px;
   width: 500px;
