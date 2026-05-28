@@ -18,6 +18,8 @@ body {
   overflow-x: hidden;
 }
 
+
+
 /* =====================
    HEADER
    ===================== */
@@ -159,8 +161,9 @@ section {
   padding: 120px 40px;
   text-align: center;
   opacity: 0;
-  transform: translateY(80px);
   transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
 }
 
 section.show {
@@ -315,6 +318,149 @@ h2 {
 
 }
 
+/* ==================================================
+==================== HISTÓRIA ====================
+================================================== */
+
+.history {
+  padding: 120px 40px;
+}
+
+.history-container {
+max-width: 1200px;
+margin: 0 auto;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 60px;
+
+flex-wrap: wrap;
+}
+
+/* ====================
+TEXTO DA HISTÓRIA
+==================== */
+
+.history-content {
+flex: 1;
+min-width: 300px;
+}
+
+.history-tag {
+display: inline-block;
+
+margin-bottom: 20px;
+
+font-size: 20px;
+letter-spacing: 2px;
+text-transform: uppercase;
+
+opacity: 0.7;
+}
+
+.history-content h2 {
+font-size: 40px;
+line-height: 1.6;
+
+margin-bottom: 50px;
+}
+
+.history-text {
+font-size: 17px;
+line-height: 1.8;
+
+opacity: 0.85;
+
+margin-bottom: 20px;
+}
+
+/* ====================
+TIMELINE
+==================== */
+
+.history-timeline {
+flex: 1;
+min-width: 450px;
+
+display: flex;
+flex-direction: column;
+gap: 25px;
+}
+
+.timeline-item {
+padding: 25px;
+
+border-radius: 25px;
+
+background: rgb(25, 0, 255);
+
+backdrop-filter: blur(60px);
+
+border: 1px solid rgba(255, 255, 255, 0.08);
+
+transition:
+transform 0.6s ease,
+border 0.3s ease,
+background 0.6s ease;
+}
+
+.timeline-item:hover {
+transform: translateY(-6px);
+
+background: rgba(255, 255, 255, 0.05);
+
+border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.timeline-item span {
+display: block;
+
+margin-bottom: 15px;
+
+font-size: 28px;
+font-weight: 600;
+}
+
+.timeline-item p {
+line-height: 1.6;
+
+opacity: 0.8;
+}
+
+/* ====================
+RESPONSIVIDADE
+==================== */
+
+@media (max-width: 768px) {
+
+.history {
+padding: 80px 20px;
+}
+
+.history-container {
+gap: 40px;
+}
+
+.history-content h2 {
+font-size: 32px;
+}
+
+.history-text {
+font-size: 16px;
+}
+
+.timeline-item {
+padding: 20px;
+}
+
+.timeline-item span {
+font-size: 24px;
+}
+
+}
+
+
 /* =====================
    EVENTOS
    ===================== */
@@ -337,7 +483,7 @@ h2 {
 }
 
 .card:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-10px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
 }
 
