@@ -469,16 +469,19 @@ button {
 }
 
 .secret-btn {
+  font-family: 'Courier New', Courier, monospacez ;
   display: inline-block;
   text-decoration: none;
   font-size: 20px;
-  opacity: 0.2;
-  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0.9;
+  transition: opacity 0.35s, transform 0.3s;
+  color: #ffae00;
 }
 
 .secret-btn:hover {
   opacity: 1;
   transform: scale(1.2);
+  text-decoration: none;
 }
 
 /* =====================

@@ -108,13 +108,40 @@
   </section>
 
   <section id="contato" class="contact">
-    <h2>Fale com a gente</h2>
-    <form class="form">
-      <input type="text" placeholder="Nome" autocomplete="name">
-      <input type="email" placeholder="Email" autocomplete="email">
-      <textarea placeholder="Mensagem" rows="5"></textarea>
-      <button type="submit">Enviar</button>
-    </form>
+
+   <h2>Fale com a gente</h2>
+
+   <form id="contact-form" class="form">
+
+     <input
+      type="text"
+      name="name"
+      placeholder="Nome"
+      autocomplete="name"
+      required
+      >
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      autocomplete="email"
+      required
+    >
+
+    <textarea
+      name="message"
+      placeholder="Mensagem"
+      rows="5"
+      required
+    ></textarea>
+
+    <button type="submit">
+      Enviar
+    </button>
+
+   </form>
+
   </section>
 
 </main>
@@ -125,6 +152,48 @@
 </footer>
 
 <script src="src/script.js" defer></script>
+<!-- script para envio do e-mail -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init("MGvmVKeGjHWN91b3b"); // ← cole sua Public Key aqui
+
+  const form = document.getElementById("contact-form");
+  const btn = form.querySelector("button[type='submit']");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    btn.textContent = "Enviando...";
+    btn.disabled = true;
+
+    emailjs.sendForm("service_m6c0ubb", "template_il2j0xn", form)
+      .then(() => {
+        btn.textContent = "Enviado ✓";
+        btn.style.background = "#22c55e";
+        form.reset();
+        setTimeout(() => {
+          btn.textContent = "Enviar";
+          btn.style.background = "";
+          btn.disabled = false;
+        }, 3000);
+      })
+      .catch((err) => {
+  console.error("Erro EmailJS:", JSON.stringify(err));
+  
+  // Mostra o erro real no botão pra facilitar o diagnóstico
+  const msg = err?.text || err?.message || JSON.stringify(err);
+  btn.textContent = `Erro: ${msg}`;
+  btn.style.background = "#ef4444";
+  btn.disabled = false;
+
+  setTimeout(() => {
+    btn.textContent = "Enviar";
+    btn.style.background = "";
+  }, 5000);
+  });
+  });
+</script> // ← fim do script email
+
 
 </body>
 </html>
