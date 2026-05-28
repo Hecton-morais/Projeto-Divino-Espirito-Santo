@@ -23,7 +23,7 @@ const track = document.querySelector('.gallery-track');
 const prevBtn = document.querySelector('.prev');
 const nextBtn = document.querySelector('.next');
 
-const imageWidth = 320;
+const imageWidth = window.innerWidth < 600 ? 260 : 320;
 
 nextBtn.addEventListener('click', () => {
   track.scrollTo({
