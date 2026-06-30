@@ -1,0 +1,27 @@
+{
+  "name": "projeto-divino-espirito-santo",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <img src=\"FUNDOREADM.jpg\" width=\"300\">\r </p>\r Projeto desenvolvido para representar o grupo jovem Divino Espírito Santo ✨ Um site criado com foco em identidade visual, experiência e conexão entre os jovens, reunindo informações, eventos, galeria e propósito em um só lugar 💙",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hecton-morais/Projeto-Divino-Espirito-Santo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Hecton-morais/Projeto-Divino-Espirito-Santo/issues"
+  },
+  "homepage": "https://github.com/Hecton-morais/Projeto-Divino-Espirito-Santo#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}
