@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Divino Espírito Santo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- TELA DE LOGIN -->
+  <div id="login-screen">
+    <div class="login-card">
+      <h1>Painel Admin</h1>
+      <p>Divino Espírito Santo</p>
+      <input type="email" id="login-email" placeholder="E-mail">
+      <input type="password" id="login-senha" placeholder="Senha">
+      <button onclick="fazerLogin()">Entrar</button>
+      <span id="login-erro"></span>
+    </div>
+  </div>
+
+  <!-- PAINEL ADMIN -->
+  <div id="admin-panel" style="display:none">
+
+    <header class="admin-header">
+      <h1>Painel Admin</h1>
+      <button onclick="fazerLogout()">Sair</button>
+    </header>
+
+    <main class="admin-main">
+
+      <!-- EVENTOS -->
+      <section class="admin-section">
+        <h2>Eventos</h2>
+        <div class="admin-form">
+          <input type="text" id="evento-titulo" placeholder="Título do evento">
+          <input type="text" id="evento-data" placeholder="Data (ex: Sábado às 18h)">
+          <button onclick="adicionarEvento()">Adicionar</button>
+        </div>
+        <div id="lista-eventos"></div>
+      </section>
+
+      <!-- FOTOS -->
+      <section class="admin-section">
+        <h2>Fotos</h2>
+        <div class="admin-form">
+          <input type="file" id="foto-file" accept="image/*">
+          <input type="text" id="foto-alt" placeholder="Descrição da foto">
+          <button onclick="adicionarFoto()">Adicionar</button>
+        </div>
+        <div id="lista-fotos"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
