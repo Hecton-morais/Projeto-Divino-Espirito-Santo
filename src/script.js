@@ -38,7 +38,7 @@ prevBtn.addEventListener('click', () => {
 // =====================
 async function carregarEventos() {
   const grid = document.getElementById('event-grid')
-  const res = await fetch('http://localhost:3001/eventos')
+  const res = await fetch('https://projeto-divino-espirito-santo.onrender.com/eventos')
   const eventos = await res.json()
 
   if (eventos.length === 0) {
@@ -59,7 +59,7 @@ async function carregarEventos() {
 // =====================
 async function carregarFotos() {
   const track = document.getElementById('gallery-track')
-  const res = await fetch('http://localhost:3001/fotos')
+  const res = await fetch('https://projeto-divino-espirito-santo.onrender.com/fotos')
   const fotos = await res.json()
 
   if (fotos.length === 0) {
