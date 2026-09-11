@@ -696,18 +696,88 @@ button {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* =====================
-   RESPONSIVO
-   ===================== */
-@media (max-width: 768px) {
-  .hero h2 {
-    font-size: 34px;
+/* ==================================================
+   RESPONSIVIDADE — PADRÃO PARA TODOS OS CELULARES
+   ================================================== */
+
+/* TABLET E CELULARES GRANDES */
+@media (max-width: 900px) {
+
+  .about-container {
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  .about-content h2 {
+    font-size: 2.3rem;
+  }
+
+  .about-side-card {
+    width: 100%;
+  }
+
+  .gallery {
+    padding: 100px 20px;
+  }
+
+  .gallery-track img {
+    min-width: 300px;
+    height: 300px;
+    border-radius: 30px;
+  }
+
+}
+
+/* CELULARES PADRÃO */
+@media (max-width: 768px) {
 
   .header {
     flex-direction: column;
     padding: 20px;
     gap: 10px;
+  }
+
+  .hero h2 {
+    font-size: 34px;
+  }
+
+  .history {
+    padding: 80px 20px;
+  }
+
+  .history-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .history-timeline {
+    min-width: 100%;
+  }
+
+  .history-content h2 {
+    font-size: 32px;
+  }
+
+  .history-text {
+    font-size: 16px;
+  }
+
+  .timeline-item {
+    padding: 20px;
+  }
+
+  .timeline-item span {
+    font-size: 24px;
+  }
+
+  .event-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 380px;
   }
 
   .gallery-track img {
@@ -716,8 +786,69 @@ button {
     border-radius: 30px;
   }
 
-  .card {
-    width: 100%;
-    max-width: 380px;
+}
+
+/* CELULARES PEQUENOS */
+@media (max-width: 600px) {
+
+  .gallery {
+    padding: 80px 15px;
   }
+
+  .carousel {
+    gap: 5px;
+  }
+
+  .gallery-track {
+    gap: 15px;
+  }
+
+  .gallery-track img {
+    min-width: 85%;
+    height: 250px;
+    border-radius: 25px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 18px;
+  }
+
+}
+
+/* CELULARES BEM PEQUENOS */
+@media (max-width: 480px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .history-content h2 {
+    font-size: 26px;
+  }
+
+  .timeline-item {
+    padding: 15px;
+  }
+
+  .form {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .footer {
+    padding: 20px;
+  }
+
 }
