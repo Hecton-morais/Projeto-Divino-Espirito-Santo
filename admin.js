@@ -1,4 +1,4 @@
-const API = 'http://localhost:3001'
+const API = 'https://projeto-divino-espirito-santo.onrender.com'
 
 // =====================
 // LOGIN / LOGOUT
