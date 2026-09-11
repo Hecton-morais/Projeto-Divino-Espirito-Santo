@@ -28,11 +28,11 @@ body {
   position: fixed;
   width: 100%;
   top: 0;
-  padding: 25px 100px;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* backdrop-filter só onde realmente necessário */
+  flex-wrap: wrap;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   background: rgba(10, 10, 10, 0.5);
@@ -45,17 +45,26 @@ body {
   color: #ffd700;
   font-family: Impact, 'Arial Narrow Bold', sans-serif;
   font-weight: 200;
+  font-size: 1.4rem;
+  margin: 0;
 }
 
 /* =====================
    NAV
    ===================== */
 .nav-list {
+  list-style: none;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li {
+  list-style: none;
 }
 
 
@@ -736,9 +745,16 @@ button {
 @media (max-width: 768px) {
 
   .header {
-    flex-direction: column;
-    padding: 20px;
-    gap: 10px;
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .nav-list {
+    font-size: 13px;
+    gap: 8px 14px;
   }
 
   .hero h2 {
@@ -829,12 +845,6 @@ button {
 
   .logo {
     font-size: 1.3rem;
-    text-align: center;
-  }
-
-  .nav-list {
-    flex-direction: column;
-    gap: 8px;
     text-align: center;
   }
 
