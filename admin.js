@@ -179,3 +179,31 @@ async function removerFoto(id, url) {
 
   carregarFotos()
 }
+
+async function adicionarFotoPorLink() {
+  const link = document.getElementById('foto-link').value.trim()
+  const alt = document.getElementById('foto-alt').value.trim()
+
+  if (!link || !alt) return alert('Cole o link do Drive e adicione uma descrição!')
+
+  const res = await fetch(`${API}/admin/foto-drive`, {
+    method: 'POST',
+    headers: authHeaders({ 'Content-Type': 'application/json' }),
+    body: JSON.stringify({ link, alt })
+  })
+
+  if (res.status === 401) {
+    alert('Sessão expirada, faça login novamente.')
+    fazerLogout()
+    return
+  }
+
+  if (!res.ok) {
+    const { error } = await res.json().catch(() => ({}))
+    return alert(error || 'Não foi possível importar a foto.')
+  }
+
+  document.getElementById('foto-link').value = ''
+  document.getElementById('foto-alt').value = ''
+  carregarFotos()
+}

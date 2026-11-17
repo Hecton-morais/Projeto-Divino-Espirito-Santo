@@ -115,6 +115,48 @@ app.delete('/admin/foto/:id', verificarToken, async (req, res) => {
   res.json({ mensagem: 'Foto removida!' })
 })
 
+// =====================
+// FOTO POR LINK DO GOOGLE DRIVE
+// =====================
+function extrairDriveId(link = '') {
+  const m = link.match(/\/d\/([A-Za-z0-9_-]{10,})/) || link.match(/[?&]id=([A-Za-z0-9_-]{10,})/)
+  return m ? m[1] : null
+}
+
+const EXTENSOES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' }
+
+app.post('/admin/foto-drive', verificarToken, async (req, res) => {
+  const { link, alt } = req.body
+  const id = extrairDriveId(link)
+  if (!id || !alt) return res.status(400).json({ error: 'Link do Drive inválido ou descrição vazia' })
+
+  try {
+    const resp = await fetch(`https://drive.usercontent.google.com/download?id=${id}&export=download&confirm=t`)
+    const tipo = (resp.headers.get('content-type') || '').split(';')[0]
+    const ext = EXTENSOES[tipo]
+
+    if (!resp.ok || !ext) {
+      return res.status(400).json({ error: 'Não consegui baixar a imagem. Confira se é JPG, PNG ou WebP e se está compartilhada como "Qualquer pessoa com o link".' })
+    }
+
+    const buffer = Buffer.from(await resp.arrayBuffer())
+    if (buffer.length > 10 * 1024 * 1024) return res.status(413).json({ error: 'Foto maior que 10 MB' })
+
+    const nome = `${Date.now()}_drive.${ext}`
+    const { error: uploadError } = await supabase.storage.from('fotos').upload(nome, buffer, { contentType: tipo })
+    if (uploadError) return res.status(500).json({ error: 'Erro ao salvar no Storage' })
+
+    const { data } = supabase.storage.from('fotos').getPublicUrl(nome)
+    const { error } = await supabase.from('fotos').insert({ url: data.publicUrl, alt })
+    if (error) return res.status(500).json({ error: 'Erro ao salvar no banco' })
+
+    res.json({ mensagem: 'Foto importada do Drive!' })
+  } catch (err) {
+    console.log('erro drive:', err)
+    res.status(500).json({ error: 'Erro ao importar do Drive' })
+  }
+})d
+
 app.listen(process.env.PORT, () => {
   console.log(`Servidor rodando na porta ${process.env.PORT}`)
 })
