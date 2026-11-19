@@ -180,9 +180,53 @@ async function removerFoto(id, url) {
   carregarFotos()
 }
 
+// =====================
+// IMPORTAR FOTO DO GOOGLE DRIVE
+// =====================
+
+// Clona a linha de upload de foto pra manter o mesmo visual
+function montarLinhaDrive() {
+  const alt = document.getElementById('foto-alt')
+  const arquivo = document.getElementById('foto-file')
+  if (!alt || !arquivo || document.getElementById('foto-link')) return
+
+  let linha = alt.parentElement
+  while (linha && !(linha.contains(arquivo) && linha.querySelector('button'))) {
+    linha = linha.parentElement
+  }
+  if (!linha) return
+
+  const nova = linha.cloneNode(true)
+  const listaDuplicada = nova.querySelector('#lista-fotos')
+  if (listaDuplicada) listaDuplicada.remove()
+
+  const novaAlt = nova.querySelector('#foto-alt')
+  const novoArquivo = nova.querySelector('#foto-file')
+  const botao = nova.querySelector('button')
+
+  const link = novaAlt.cloneNode(true)
+  link.id = 'foto-link'
+  link.type = 'url'
+  link.placeholder = 'Link do Google Drive'
+  link.value = ''
+  novoArquivo.replaceWith(link)
+
+  novaAlt.id = 'foto-alt-drive'
+  novaAlt.placeholder = 'Descrição da foto'
+  novaAlt.value = ''
+
+  botao.textContent = 'Importar'
+  botao.removeAttribute('onclick')
+  botao.addEventListener('click', adicionarFotoPorLink)
+
+  linha.after(nova)
+}
+
+window.addEventListener('DOMContentLoaded', montarLinhaDrive)
+
 async function adicionarFotoPorLink() {
   const link = document.getElementById('foto-link').value.trim()
-  const alt = document.getElementById('foto-alt').value.trim()
+  const alt = document.getElementById('foto-alt-drive').value.trim()
 
   if (!link || !alt) return alert('Cole o link do Drive e adicione uma descrição!')
 
@@ -204,6 +248,6 @@ async function adicionarFotoPorLink() {
   }
 
   document.getElementById('foto-link').value = ''
-  document.getElementById('foto-alt').value = ''
+  document.getElementById('foto-alt-drive').value = ''
   carregarFotos()
 }
